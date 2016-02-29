@@ -1,0 +1,36 @@
+.header {
+  margin: 100px 120px;
+  letter-spacing: -.17px;
+  line-height: 37px;
+  font-size: 35px;
+  color: #111;
+
+  &__nav {
+    padding: 0;
+    margin: 80px 0 0;
+    list-style: none;
+    line-height: 28px;
+    font-size: 23px;
+    color: #222;
+  }
+
+  &__nav-item {
+    display: inline-block;
+    cursor: pointer;
+    color: #aaa;
+
+    & + & {
+      margin-left: 50px;
+    }
+
+    &:hover,
+    &_active {
+      color: #333;
+    }
+  }
+
+  &__logo {
+    margin-top: 80px;
+    float: right;
+  }
+}

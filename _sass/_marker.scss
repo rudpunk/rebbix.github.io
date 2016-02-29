@@ -1,0 +1,47 @@
+.marker {
+  position: fixed;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid #D8D8D8;
+  list-style: none;
+  left: 42px;
+  top: 0;
+
+  &__item:before {
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    width: 5px;
+    height: 5px;
+    margin-top: -3px;
+    background: #d8d8d8;
+    border-radius: 50%;
+    content: "";
+  }
+
+  &__item {
+    position: absolute;
+    padding: 0 0 0 10px;
+    top: 100%;
+    transition: all 1s;
+    font-size: 13px;
+    color: #a6a6a6;
+  }
+
+  &__item_active {
+    margin-top: 0;
+    top: 30%;
+  }
+
+  &__item_passed {
+    margin-top: 0;
+    top: 100px;
+  }
+
+  @for $i from 1 through 10 {
+    &__item:nth-child(#{$i}) {
+      margin-top: -#{210 - ($i - 1) * 35}px;
+    }
+  }
+}
