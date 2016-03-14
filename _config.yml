@@ -15,3 +15,6 @@ github_username:  rebbix
 
 # Build settings
 markdown: kramdown
+
+collections:
+- work

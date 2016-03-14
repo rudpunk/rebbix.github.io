@@ -1,0 +1,71 @@
+.card {
+  clear: both;
+  margin-bottom: 100px;
+  background-size: cover;
+
+  &_left,
+  &_right {
+    margin-left: 120px;
+    margin-right: 120px;
+    padding: 40px 100px 40px 40px;
+    border-radius: 5px;
+  }
+
+  &_left {
+    float: left;
+    max-width: 420px;
+  }
+
+  &_right {
+    float: right;
+    max-width: 380px;
+  }
+
+  &_wide {
+    padding: 400px 100px 40px;
+    text-align: center;
+  }
+
+  &__content {
+    max-width: 580px;
+    margin: 0 auto;
+
+    h1 {
+      margin: 20px 0;
+      line-height: 42px;
+      font-weight: 400;
+      font-size: 40px;
+    }
+
+    h2 {
+      margin: 20px 0;
+      line-height: 34px;
+      font-weight: 400;
+      font-size: 36px;
+    }
+
+    h3 {
+      margin: 20px 0;
+      line-height: 30px;
+      font-weight: 400;
+      font-size: 32px;
+    }
+
+    p {
+      margin: 20px 0;
+      line-height: 30px;
+      font-weight: 400;
+      font-size: 22px;
+    }
+  }
+
+  &__img {
+    margin-bottom: 40px;
+  }
+
+  &__date {
+    font-weight: 400;
+    font-size: 14px;
+    opacity: .6;
+  }
+}

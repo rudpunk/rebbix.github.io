@@ -1,10 +1,16 @@
 body {
   margin: 0;
-  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 400 16px/1.5 "acumin-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
   -o-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
   font-kerning: normal;
+}
+
+.content {
+  clear: both;
+  overflow: hidden;
+  margin: 100px 0;
 }
