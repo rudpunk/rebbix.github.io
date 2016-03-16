@@ -1,27 +1,36 @@
 .card {
-  clear: both;
-  margin-bottom: 100px;
-  background-size: cover;
+  &__wrap {
+    background-size: cover;
+  }
 
   &_left,
   &_right {
-    margin-left: 120px;
-    margin-right: 120px;
+    max-width: 1180px;
+    padding: 100px 120px 0 120px;
+    margin: 0 auto;
+  }
+
+  &_left &__wrap,
+  &_right &__wrap {
+    margin: 50px 0;
     padding: 40px 100px 40px 40px;
     border-radius: 5px;
   }
 
-  &_left {
+  &_left &__wrap {
     float: left;
+    margin-right: 50px;
     max-width: 420px;
   }
 
-  &_right {
+  &_right &__wrap {
     float: right;
+    margin-left: 50px;
     max-width: 380px;
   }
 
-  &_wide {
+  &_wide &__wrap {
+    clear: both;
     padding: 400px 100px 40px;
     text-align: center;
   }
