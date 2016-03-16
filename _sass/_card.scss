@@ -5,39 +5,42 @@
 
   &_left,
   &_right {
-    max-width: 1180px;
+    max-width: 1140px;
     padding: 100px 120px 0 120px;
     margin: 0 auto;
   }
 
   &_left &__wrap,
   &_right &__wrap {
-    margin: 50px 0;
+    margin-bottom: 100px;
     padding: 40px 100px 40px 40px;
     border-radius: 5px;
   }
 
   &_left &__wrap {
     float: left;
-    margin-right: 50px;
+    margin-right: 30px;
     max-width: 420px;
   }
 
   &_right &__wrap {
     float: right;
-    margin-left: 50px;
+    margin-left: 30px;
     max-width: 380px;
   }
 
-  &_wide &__wrap {
+  &_wide {
     clear: both;
+  }
+
+  &_wide &__wrap {
     padding: 400px 100px 40px;
     text-align: center;
   }
 
   &__content {
-    max-width: 580px;
     margin: 0 auto;
+    max-width: 580px;
 
     h1 {
       margin: 20px 0;
