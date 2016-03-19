@@ -1,74 +1,71 @@
-
-var coords = getCoordinates();
-var years = document.querySelectorAll('.marker > .marker__list > li');
-
+var markers = document.querySelectorAll('.marker__item')
+var cards = document.querySelectorAll('.card')
+var coords = getCoordinates()
 
 document.addEventListener('DOMContentLoaded', function() {
-  highlightActiveYear();
-}, false);
+  arrange()
+}, false)
 
-window.onscroll = function () {
-  highlightActiveYear();
+window.onscroll = function() {
+  arrange()
 }
 
-function highlightActiveYear () {
-  var YPosition =  window.pageYOffset + window.outerHeight/2;
-  var highlightedPosition = getActive(YPosition);
+function arrange() {
+  var scrollTop = document.body.scrollTop + window.outerHeight / 2
+  var year = getActive(scrollTop)
 
-  if(highlightedPosition) {
-    removeHighlight(highlightedPosition);
-    highlightYear(highlightedPosition);
+  if (year) {
+    highlightYear(year)
   }
 }
 
 function getCoordinates() {
-  var items = document.querySelectorAll('.container > .container__item');
-  var years = document.querySelectorAll('.container > .container__item > div.footer');
-  var coords = [];
-  for(var i=0; i<items.length; i++) {
-    var year = (years[i].innerHTML).replace(/[^0-9]/g, '');
-    coords.push({top:items[i].getBoundingClientRect().top + window.pageYOffset, height:items[i].getBoundingClientRect().height, year:year});
+  var coords = []
+
+  for(var i = 0; i < cards.length; i++) {
+    var rect = cards[i].querySelector('.card__wrap')
+      .getBoundingClientRect()
+
+    coords.push({
+      top: rect.top + window.pageYOffset
+    , year: cards[i].dataset.year
+    , height: rect.height
+    })
   }
-  return coords;
+
+  return coords
 }
 
-function getActive(YPosition) {
-  for(var i=0; i<coords.length; i++) {
-    if(YPosition >= coords[i].top && YPosition <= coords[i].top + coords[i].height) {
-      return coords[i].year;
+function getActive(scrollTop) {
+  for (var i = 0; i < coords.length; i++) {
+    if (scrollTop >= coords[i].top &&
+        scrollTop <= coords[i].top + coords[i].height) {
+      return coords[i].year
     }
   }
-  return null;
+  return null
 }
+
 
 function highlightYear(year) {
-  for(var i=0; i<years.length; i++) {
-    if(years[i].innerHTML > year) {
-      years[i].setAttribute('class', 'passed');
-      years[i].style.marginTop = (i+1)*20 + "px";
-    }
-    else if(years[i].innerHTML < year && years[i].hasAttribute('class', 'passed')) {
-       years[i].removeAttribute('class', 'passed');
-       years[i].removeAttribute('style');
-    }
+  var passed = []
+  var marker;
 
-    else if(years[i].innerHTML == year) {
-      years[i].setAttribute('class' , 'active');
-      years[i].removeAttribute('style');
+  for (var i = 0; i < markers.length; i++) {
+    marker = markers[i]
+    marker.classList.remove('marker__item_passed')
+    marker.classList.remove('marker__item_active')
+    marker.removeAttribute('style')
+
+    if (marker.innerHTML > year) {
+      marker.classList.add('marker__item_passed')
+      passed.push(marker)
+    } else if (marker.innerHTML == year) {
+      marker.classList.add('marker__item_active')
+      passed.push(marker)
     }
   }
-}
-
-function removeHighlight(year) {
-   for(var i=0; i<years.length; i++) {
-    if(years[i].hasAttribute('class', 'active') && years[i].innerHTML > year) {
-      years[i].removeAttribute('class' , 'active');
-
-    }
-    else if(years[i].hasAttribute('class', 'active') && years[i].innerHTML < year) {
-       years[i].removeAttribute('class' , 'active');
-       years[i].setAttribute('class' , 'passed');
-       years[i].style.marginTop = (i+1)*20 + "px";
-    }
+  for (var i = passed.length, j = 0; i--; j++) {
+    passed[i].style.marginTop = -(j*35) + "px"
   }
 }

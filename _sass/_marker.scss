@@ -29,12 +29,12 @@
     color: #a6a6a6;
   }
 
-  &__item_active {
-    margin-top: 0;
-    top: 30%;
+  &__item_passed {
+    opacity: .5;
   }
 
-  &__item_passed {
+  &__item_passed,
+  &__item_active {
     margin-top: 0;
     top: 100px;
   }

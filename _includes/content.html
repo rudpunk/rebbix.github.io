@@ -1,6 +1,6 @@
 <div class="content">
   {% for item in site.work reversed %}
-  <div class="card card_{{ item.type }}">
+  <div class="card card_{{ item.type }}" data-year="{{ item.date | date: "%Y" }}">
     <div class="card__wrap" style="
       background-color:{{ item.background_color }};
       background-image:url({{ item.background_image }});
