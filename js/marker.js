@@ -11,12 +11,9 @@ window.onscroll = function() {
 }
 
 function arrange() {
-  var scrollTop = document.body.scrollTop + window.outerHeight / 2
-  var year = getActive(scrollTop)
-
-  if (year) {
-    highlightYear(year)
-  }
+  var scrollCenter = document.body.scrollTop + window.innerHeight / 2
+  var year = getActive(scrollCenter)
+  highlightYear(year)
 }
 
 function getCoordinates() {
@@ -36,14 +33,13 @@ function getCoordinates() {
   return coords
 }
 
-function getActive(scrollTop) {
-  for (var i = 0; i < coords.length; i++) {
-    if (scrollTop >= coords[i].top &&
-        scrollTop <= coords[i].top + coords[i].height) {
-      return coords[i].year
-    }
-  }
-  return null
+function getActive(scrollCenter) {
+  var skipped = coords.filter(function(item) {
+    return scrollCenter > item.top
+  })
+  return skipped[skipped.length-1] ?
+         skipped[skipped.length-1].year :
+         null
 }
 
 
@@ -57,12 +53,14 @@ function highlightYear(year) {
     marker.classList.remove('marker__item_active')
     marker.removeAttribute('style')
 
-    if (marker.innerHTML > year) {
-      marker.classList.add('marker__item_passed')
-      passed.push(marker)
-    } else if (marker.innerHTML == year) {
-      marker.classList.add('marker__item_active')
-      passed.push(marker)
+    if (year) {
+      if (marker.innerHTML > year) {
+        marker.classList.add('marker__item_passed')
+        passed.push(marker)
+      } else if (marker.innerHTML == year) {
+        marker.classList.add('marker__item_active')
+        passed.push(marker)
+      }
     }
   }
   for (var i = passed.length, j = 0; i--; j++) {
