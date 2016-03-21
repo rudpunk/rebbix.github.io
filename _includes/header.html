@@ -2,11 +2,11 @@
   Rebbix is a startup studio building tomorrow's companies. 
   Together with entrepreneurs, we turn unique ideas into successful companies used by thousands.
   We act as the perfect co-founder to build strong and independent startups.
-  <ul class="header__nav">
-    <li class="header__nav-item header__nav-item_active">Work</li><!--
- --><li class="header__nav-item">Team</li><!--
- --><li class="header__nav-item">Life</li><!--
- --><li class="header__nav-item">Contact us</li>
-  </ul>
+  <nav class="header__nav">
+    <a href="/" class="header__nav-item{% if page.url == '/' %} header__nav-item_active{% endif %}">Work</a><!--
+ --><a href="/team" class="header__nav-item{% if page.url == '/team' %} header__nav-item_active{% endif %}">Team</a><!--
+ --><a href="/life" class="header__nav-item{% if page.url == '/life' %} header__nav-item_active{% endif %}">Life</a><!--
+ --><a href="/contacts" class="header__nav-item{% if page.url == '/contacts' %} header__nav-item_active{% endif %}">Contact us</a>
+  </nav>
   <img class="header__logo" src="/img/logo_rebbix.svg"/>
 </header>
