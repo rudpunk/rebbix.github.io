@@ -18,3 +18,5 @@ markdown: kramdown
 
 collections:
 - work
+
+exclude: ['config.ru', 'Gemfile', 'Gemfile.lock', 'vendor']
