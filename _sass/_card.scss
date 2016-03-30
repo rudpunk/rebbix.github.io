@@ -4,7 +4,9 @@
   }
 
   &_left,
-  &_right {
+  &_right,
+  &_card-left,
+  &_card-right {
     max-width: 1140px;
     padding: 100px 120px 0 120px;
     margin: 0 auto;
@@ -13,20 +15,45 @@
   &_left &__wrap,
   &_right &__wrap {
     margin-bottom: 100px;
+  }
+
+  &_card-left &__wrap,
+  &_card-right &__wrap {
+    margin-bottom: 100px;
     padding: 40px 100px 40px 40px;
     border-radius: 5px;
   }
 
-  &_left &__wrap {
+  &_left &__wrap,
+  &_card-left &__wrap {
     float: left;
     margin-right: 30px;
-    max-width: 420px;
   }
 
-  &_right &__wrap {
+  &_right &__wrap,
+  &_card-right &__wrap {
     float: right;
     margin-left: 30px;
-    max-width: 380px;
+  }
+
+  &_card-left &__wrap {
+    width: 420px;
+  }
+  &_card-right &__wrap {
+    width: 380px;
+  }
+
+  &_left &__wrap {
+    width: 540px;
+  }
+  &_right &__wrap {
+    width: 540px;
+  }
+
+  &_left &__content > iframe:not(.instagram-media),
+  &_right &__content > iframe:not(.instagram-media) {
+    height: 300px;
+    width: 540px;
   }
 
   &_wide {

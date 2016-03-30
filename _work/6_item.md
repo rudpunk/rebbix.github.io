@@ -4,7 +4,7 @@ image: "/img/logo_toast.svg"
 background_image: "/img/pic_toast.png"
 background_color: "#111111"
 font_color: "#ffffff"
-type: "left"
+type: "card-left"
 ---
 ### $1m Seed Round for Toast
 
