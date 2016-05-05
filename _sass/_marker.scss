@@ -1,44 +1,54 @@
 .marker {
-  position: fixed;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border-left: 1px solid #D8D8D8;
-  list-style: none;
-  left: 42px;
-  top: 0;
-
-  &__item:before {
-    position: absolute;
-    top: 50%;
-    left: -3px;
-    width: 5px;
-    height: 5px;
-    margin-top: -3px;
-    background: #d8d8d8;
-    border-radius: 50%;
+  &:before {
+    position: fixed;
+    height: 100%;
+    border-left: 1px solid #D8D8D8;
+    list-style: none;
+    left: 41px;
+    top: 0;
     content: "";
   }
 
   &__item {
-    position: absolute;
+    position: fixed;
     padding: 0 0 0 10px;
     top: 100%;
-    transition: all 1s;
+    left: 42px;
     letter-spacing: .2px;
     font-size: 13px;
+    cursor: pointer;
     color: #a6a6a6;
+
+    &:hover {
+      color: #222;
+    }
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: -3px;
+      width: 5px;
+      height: 5px;
+      margin-top: -3px;
+      background: #d8d8d8;
+      border-radius: 50%;
+      content: "";
+    }
+
+    &:hover:before {
+      background: #222;
+    }
   }
 
-  &__item_passed {
-    opacity: .5;
-  }
-
-  &__item_passed,
   &__item_active {
-    transform: translateZ(0);
-    margin-top: 0;
-    top: 100px;
+    position: absolute;
+    margin-top: 0 !important;
+    transition: none;
+    color: #222;
+
+    &:before {
+      background: #222;
+    }
   }
 
   @for $i from 1 through 10 {
