@@ -5,4 +5,4 @@ background_color: "#ffffff"
 font_color: "#111111"
 type: "card-right"
 ---
-# <span style="color:#85bc49">Pivot</span>. We start strategic partnership with Jack Dorsey to improve Twitter performance
+# *~~Pivot~~. We start strategic partnership with Jack Dorsey to improve Twitter performance*

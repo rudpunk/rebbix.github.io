@@ -94,7 +94,25 @@
       margin: 20px 0;
       line-height: 30px;
       font-weight: 400;
-      font-size: 22px;
+      font-size: 23px;
+    }
+
+    h1 em,
+    h2 em,
+    h3 em,
+    h4 em,
+    p em {
+      font-family: 'chaparral-pro';
+      font-style: normal;
+    }
+
+    h1 del,
+    h2 del,
+    h3 del,
+    h4 del,
+    p del {
+      text-decoration: none;
+      color: #85bc49;
     }
   }
 
@@ -103,7 +121,7 @@
   }
 
   &__date {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 14px;
     opacity: .6;
   }
