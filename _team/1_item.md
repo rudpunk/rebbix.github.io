@@ -1,8 +1,12 @@
 ---
 date: 2016-01-17 15:20:09 +0200
-image: "/img/logo_yippie.svg"
-background_color: "#2a96ff"
-font_color: "#ffffff"
+label: "Joined October 2015"
+avatar: "/img/pic_serhiy.jpg"
+link_linkedin: "http://upyachka.ru"
+link_github: "http://upyachka.ru"
+name: "Robert D'Niro"
+position: "Developer"
+font_color: "#222"
 type: "left"
 ---
-Mauris non tempor quam, et lacinia sapien. Mauris accumsan eros eget libero.
+Some words about what George is involved in, what are his hobbies in tech and life. Expeirence with clients like.

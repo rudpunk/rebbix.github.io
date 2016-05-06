@@ -1,23 +1,9 @@
 ---
 layout: default
+permalink: /
 ---
 <div class="content">
   {% for item in site.work reversed %}
-  <div class="card card_{{ item.type }}" data-year="{{ item.date | date: "%Y" }}">
-    <div class="card__wrap" style="
-      background-color:{{ item.background_color }};
-      background-image:url({{ item.background_image }});
-      color:{{ item.font_color }};">
-      {% if item.image %}
-        <img class="card__img" src="{{ item.image }}"/>
-      {% endif %}
-      {% if item.content %}
-        <div class="card__content">{{ item.content }}</div>
-      {% endif %}
-      {% if item.date %}
-        <div class="card__date">{{ item.date | date: "%B, %Y" }}</div>
-      {% endif %}
-    </div>
-  </div>
+  {% include card.html item=item %}
   {% endfor %}
 </div>

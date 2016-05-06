@@ -68,6 +68,7 @@
   &__content {
     margin: 0 auto;
     max-width: 580px;
+    overflow: hidden;
 
     h1 {
       margin: 20px 0;
@@ -120,9 +121,51 @@
     margin-bottom: 40px;
   }
 
-  &__date {
+  &__label {
     font-weight: 300;
     font-size: 14px;
     opacity: .6;
+  }
+
+  &__avatar {
+    float: left;
+    margin-right: 40px;
+    height: 120px;
+    width: 120px;
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 20px;
+    line-height: 23px;
+    font-size: 23px;
+  }
+
+  &__position {
+    display: block;
+    margin-bottom: 20px;
+    line-height: 25px;
+    font-size: 25px;
+    color: #80b744;
+  }
+
+  &__link {
+    display: inline-block;
+    margin: 0 0 10px 0;
+    height: 25px;
+    width: 25px;
+    background: no-repeat center;
+    background-size: 25px 25px;
+
+    & + & {
+      margin-left: 5px;
+    }
+
+    &_linkedin {
+      background-image: url("/img/icon_linkedin.svg");
+    }
+    &_github {
+      background-image: url("/img/icon_github.svg");
+    }
   }
 }
