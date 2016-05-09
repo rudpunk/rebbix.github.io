@@ -19,6 +19,11 @@ document.body.appendChild($marker)
 var coordsMarkers = getMarkersCoordinates()
 document.addEventListener('DOMContentLoaded', arrange)
 window.addEventListener('scroll', arrange)
+window.addEventListener('resize', function() {
+  coordsAnchors = getAnchorsCoordinates()
+  coordsMarkers = getMarkersCoordinates()
+  arrange()
+})
 
 coordsMarkers.forEach(function(marker) {
   marker.$marker.addEventListener('click', function() {
