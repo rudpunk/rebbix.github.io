@@ -5,7 +5,7 @@
 - Clone repository
   
   ```
-  git clone git@github.com:borbit/rebbix.com.git
+  git clone git@github.com:rebbix/rebbix.github.io.git
   cd rebbix.com
   ```
   
