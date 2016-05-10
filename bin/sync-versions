@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+GITHUB_DEPS_VERSIONS_URL="https://pages.github.com/versions.json"
+BACKUP_EXT=".bak"
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+LOCAL_DEPS_MANIFEST_PATH="${ROOT_DIR}/.deps-manifest"
+RUBY_VERSION_FILE_PATH="${ROOT_DIR}/.ruby-version"
+GEMFILE_FILE_PATH="${ROOT_DIR}/Gemfile"
+
+dep_version_from_manifest(){
+  local dep_name=$1
+  cat "${LOCAL_DEPS_MANIFEST_PATH}" | grep -o '"'"${dep_name}"'"\s*:\s*"\([^"]\+\)"' | sed 's/^.*:"\(.*\)"/\1/'
+}
+
+gem_version_from_gemfile(){
+  local gem_name=$1
+  cat "${GEMFILE_FILE_PATH}" | \
+    grep '^\s*gem' | grep "${gem_name}" | \
+    tail -n 1 | sed -E 's/^[^,]*(,?[^,]*).*$/\1/' | \
+    sed -E 's/^,[[:space:]]*(".*"|'\''.*'\''|,*).*$/\1/' | \
+    sed 's/^.\(.*\)./\1/'
+}
+
+ruby_version(){
+  cat ${RUBY_VERSION_FILE_PATH}
+}
+
+update_ruby_version(){
+  local ruby_version_was="$( ruby_version )"
+  dep_version_from_manifest 'ruby' > "${RUBY_VERSION_FILE_PATH}"
+  echo "ruby: '${ruby_version_was}' => '$( ruby_version )'"
+}
+
+update_gem_version(){
+  local gem_name=$1
+  local desired_gem_version="$( dep_version_from_manifest "${gem_name}" )"
+  local current_gem_version="$( gem_version_from_gemfile "${gem_name}" )"
+  if [ -n "${desired_gem_version}" ]; then
+    echo "${gem_name}: '${current_gem_version}' => '${desired_gem_version}'"
+    sed -E -e "s/^([[:space:]]*gem[[:space:]]*['"\""]${gem_name}['"\""][^,]*)(,[[:space:]]*['"\""]${current_gem_version}['"\""])?(.*)$/\1, '${desired_gem_version}'\3/" -i "${BACKUP_EXT}" "${GEMFILE_FILE_PATH}"
+  else
+    echo "${gem_name}: '${current_gem_version}' => SKIP (not defined in manifest)"
+  fi
+}
+
+update_gem_versions(){
+  cat "${LOCAL_DEPS_MANIFEST_PATH}" | \
+    grep -o '"[^"]\+"\s*:' | grep -o '[^":]\+' | \
+    while read -r gem_name; do update_gem_version "${gem_name}"; done && \
+    rm "${GEMFILE_FILE_PATH}${BACKUP_EXT}"
+}
+
+curl -so "${LOCAL_DEPS_MANIFEST_PATH}" "${GITHUB_DEPS_VERSIONS_URL}" \
+  && update_ruby_version \
+  && update_gem_versions \
+  && echo "Done."

@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
-#gem 'bundler'
-gem 'jekyll'
-#gem 'rack-jekyll'
+ruby "#{File.open('./.ruby-version').read}"
+
+gem 'github-pages', '78', group: :jekyll_plugins
