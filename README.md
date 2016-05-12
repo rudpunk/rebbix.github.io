@@ -38,7 +38,7 @@
 1. Update packages list
 
   ```bash
-  brew Update
+  brew update
   ```
 
 2. Install rbenv
